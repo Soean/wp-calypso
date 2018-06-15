@@ -50,9 +50,9 @@ import SupportUser from 'support/support-user';
 import { isCommunityTranslatorEnabled } from 'components/community-translator/utils';
 import { isE2ETest } from 'lib/e2e';
 
-/* eslint-disable react/no-deprecated */
+/* eslint-disable react/prefer-es6-class */
 const Layout = createReactClass( {
-	/* eslint-enable react/no-deprecated */
+	/* eslint-enable react/prefer-es6-class */
 	displayName: 'Layout',
 
 	mixins: [ observe( 'user' ) ],

@@ -86,15 +86,15 @@ export default {
 			localeFromStore &&
 			canResumeFlow( flowName, SignupProgressStore.get() )
 		) {
-			window.location =
-				getStepUrl(
-					flowName,
-					getStepName( context.params ),
-					getStepSectionName( context.params ),
-					localeFromStore
-				) +
-				( context.querystring ? '?' + context.querystring : '' ) +
-				( context.hashstring ? '#' + context.hashstring : '' );
+			const url = `${ getStepUrl(
+				flowName,
+				getStepName( context.params ),
+				getStepSectionName( context.params ),
+				localeFromStore
+			) }${ context.querystring ? '?' + context.querystring : '' }${
+				context.hashstring ? '#' + context.hashstring : ''
+			}`;
+			window.location = url;
 			return;
 		}
 

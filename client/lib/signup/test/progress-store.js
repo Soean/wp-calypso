@@ -128,13 +128,14 @@ describe( 'progress-store', () => {
 		);
 	} );
 
-	test( 'should mark only new saved steps as in-progress', () => {
+	test( 'should mark only new saved steps as in-progress', done => {
 		SignupActions.saveSignupStep( { stepName: 'site-selection' } );
 		SignupActions.saveSignupStep( { stepName: 'last-step' } );
 
 		defer( () => {
 			expect( first( SignupProgressStore.get() ).status ).not.toEqual( 'in-progress' );
 			expect( last( SignupProgressStore.get() ).status ).toEqual( 'in-progress' );
+			done();
 		} );
 	} );
 

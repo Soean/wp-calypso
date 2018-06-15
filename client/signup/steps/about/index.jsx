@@ -55,7 +55,7 @@ class AboutStep extends Component {
 		};
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.formStateController = new formState.Controller( {
 			fieldNames: [ 'siteTitle', 'siteGoals', 'siteTopic' ],
 			validatorFunction: noop,
@@ -74,11 +74,17 @@ class AboutStep extends Component {
 			},
 		} );
 
+		this._isMounted = true;
+
 		this.setFormState( this.formStateController.getInitialState() );
 	}
 
+	componentWillUnmount() {
+		this._isMounted = false;
+	}
+
 	setFormState = state => {
-		this.setState( { form: state } );
+		this._isMounted && this.setState( { form: state } );
 	};
 
 	setPressableStore = ref => {
